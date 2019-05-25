@@ -2,12 +2,11 @@
 #include "include/leftistheap.h"
 
 LeftistHeap::LeftistHeap() {
-
     root = nullptr;
 }
 
-LeftistHeap::LeftistHeap(LeftistHeap& lh) {
-    root = NULL;
+LeftistHeap::LeftistHeap(const LeftistHeap& lh) {
+    this->root = NULL;
     *this = lh;
 }
 
@@ -43,11 +42,11 @@ void LeftistHeap::DeleteMin() {
     delete oldroot;
 }
 
-void LeftistHeap::Merge(LeftistHeap &lh) {
-    if (this == &lh)
+void LeftistHeap::Merge(LeftistHeap* lh) {
+    if (this == lh)
         return;
-    root = Merge(root, lh.root);
-    lh.root = NULL;
+    root = Merge(root, lh->root);
+    lh->root = NULL;
 }
 
 Node* LeftistHeap::Merge(Node* n1, Node* n2) {
@@ -62,15 +61,11 @@ Node* LeftistHeap::Merge(Node* n1, Node* n2) {
 }
 
 Node* LeftistHeap::MergeLeft(Node* n1, Node* n2) {
-    if (n1->left == NULL)
-    {
+    if (n1->left == NULL) {
         n1->left = n2;
-    }
-    else
-    {
+    } else {
         n1->right = Merge(n1->right, n2);
-        if (n1->left->dist < n1->right->dist)
-        {
+        if (n1->left->dist < n1->right->dist) {
             SwapChildren(n1);
         }
         n1->dist = n1->right->dist + 1;
@@ -83,4 +78,3 @@ void LeftistHeap::SwapChildren(Node* t) {
     t->left = t->right;
     t->right = tmp;
 }
-

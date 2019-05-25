@@ -31,7 +31,7 @@ TEST(LeftistHeap_Test, IsEmpty_Returns_True_When_Empty) {
     LeftistHeap lh;
     // Act
     // Assert
-    EXPECT_EQ(true, lh.IsEmpty());
+    EXPECT_TRUE(lh.IsEmpty());
 }
 
 TEST(LeftistHeap_Test, IsEmpty_Returns_False_When_NotEmpty) {
@@ -40,7 +40,7 @@ TEST(LeftistHeap_Test, IsEmpty_Returns_False_When_NotEmpty) {
     // Act
     lh.Insert(23);
     // Assert
-    EXPECT_EQ(false, lh.IsEmpty());
+    EXPECT_FALSE(lh.IsEmpty());
 }
 
 TEST(LeftistHeap_Test, Can_FindMin_Correcly) {
@@ -78,21 +78,19 @@ TEST(LeftistHeap_Test, Can_Merge_Two_LeftistHeaps) {
     LeftistHeap lh2;
     // Act
     // Assert
-    ASSERT_NO_THROW(lh1.Merge(lh2));
+    ASSERT_NO_THROW(lh1.Merge(&lh2));
 }
 
 TEST(LeftistHeap_Test, Can_Merge_Two_LeftistHeaps_Correctly) {
     // Arrange
     LeftistHeap lh1;
     LeftistHeap lh2;
-    
     // Act
     lh1.Insert(3);
     lh1.Insert(1);
     lh2.Insert(2);
     lh2.Insert(3);
-    lh1.Merge(lh2);
-
+    lh1.Merge(&lh2);
     // Assert
     EXPECT_EQ(1, lh1.FindMin());
     lh1.DeleteMin();
@@ -111,8 +109,7 @@ TEST(LeftistHeap_Test, Can_Merge_With_Empty_LeftistHeaps1) {
     // Act
     lh1.Insert(3);
     // Assert
-    ASSERT_NO_THROW(lh2.Merge(lh1));
-    
+    ASSERT_NO_THROW(lh2.Merge(&lh1));
 }
 
 TEST(LeftistHeap_Test, Can_Merge_With_Empty_LeftistHeaps2) {
@@ -123,8 +120,7 @@ TEST(LeftistHeap_Test, Can_Merge_With_Empty_LeftistHeaps2) {
     // Act
     lh1.Insert(3);
     // Assert
-    ASSERT_NO_THROW(lh1.Merge(lh2));
-
+    ASSERT_NO_THROW(lh1.Merge(&lh2));
 }
 
 TEST(LeftistHeap_Test, Can_Merge_With_Itself) {
@@ -133,8 +129,7 @@ TEST(LeftistHeap_Test, Can_Merge_With_Itself) {
     // Act
     lh1.Insert(3);
     // Assert
-    ASSERT_NO_THROW(lh1.Merge(lh1));
-
+    ASSERT_NO_THROW(lh1.Merge(&lh1));
 }
 
 TEST(LeftistHeap_Test, Can_Merge_Leftishheaps_With_OneElem) {
@@ -145,11 +140,5 @@ TEST(LeftistHeap_Test, Can_Merge_Leftishheaps_With_OneElem) {
     lh1.Insert(3);
     lh2.Insert(4);
     // Assert
-    ASSERT_NO_THROW(lh1.Merge(lh1));
-
+    ASSERT_NO_THROW(lh1.Merge(&lh1));
 }
-
-
-
-
-
