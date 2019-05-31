@@ -1,6 +1,7 @@
 // Copyright 2019 Daria Koroleva
 
 #include "include/leftist_heap_app.h"
+#include <string>
 #include <cstring>
 
 
@@ -39,9 +40,8 @@ std::string HeapSort::operator()(int argc, const char** argv) {
     for (int i = 1; i < argc; i ++) {
         lh.Insert(std::atoi(argv[i]));
     }
-    
-    while (!lh.IsEmpty())
-    {
+  
+    while (!lh.IsEmpty()) {
         sorted += (std::to_string(lh.FindMin()) + " ");
         lh.DeleteMin();
     }
