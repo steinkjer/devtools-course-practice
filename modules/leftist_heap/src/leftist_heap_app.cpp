@@ -2,6 +2,7 @@
 
 #include "include/leftist_heap_app.h"
 
+
 void HeapSort::Info(const char* appname, const char* message) {
     message_ = std::string(message) +
         "This is a heapsort application. \n\n" +
@@ -18,7 +19,7 @@ bool HeapSort::CheckArguments(int argc, const char** argv) {
     }
 
     for (int i = 1; i < argc; i++) {
-        if ((atoi(argv[i]) == 0) && (strcmp(argv[i], "0") != 0)) {
+        if ((atoi(argv[i]) == 0) && argv[i] != "0") {
             Info(argv[0], "ERROR : All arguments must be integers. \n\n");
             return false;
         }
