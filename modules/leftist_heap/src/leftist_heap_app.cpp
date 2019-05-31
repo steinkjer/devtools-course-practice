@@ -40,7 +40,6 @@ std::string HeapSort::operator()(int argc, const char** argv) {
     for (int i = 1; i < argc; i ++) {
         lh.Insert(std::atoi(argv[i]));
     }
- 
     while (!lh.IsEmpty()) {
         sorted += (std::to_string(lh.FindMin()) + " ");
         lh.DeleteMin();
