@@ -1,9 +1,10 @@
 // Copyright 2019 Daria Koroleva
 
-#include "include/leftist_heap_app.h"
 #include <vector>
 #include <string>
+#include "include/leftist_heap_app.h"
 #include "gtest/gtest.h"
+
 
 using ::testing::internal::RE;
 using std::vector;
